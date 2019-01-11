@@ -1,0 +1,31 @@
+author: Paul Austen <pausten.os@gmail.com>
+type: lib
+description: ADS7843/XPT2046 SPI based touch screen
+version: 1.0
+platforms: [ esp8266, esp32 ]
+
+sources:
+  - src
+includes:
+  - include
+libs:
+  - origin: https://github.com/mongoose-os-libs/spi
+
+config_schema:
+  - ["ads7843", "o", {title: "ADS7843/XPT2046 TouchScreen"}]
+  - ["ads7843.cs_index", "i", 1, {title: "spi.cs*_gpio index, 0, 1 or 2"}] # This defines the SPI CS line to use (0, 1 or 2)
+  - ["ads7843.irq_pin", "i", 25, {title: "IRQ pin (taken low when the display is touched.)"}]
+  - ["ads7843.x_pixels", "i", 320, {title: "The display pixel count in the horizontal direction"}]
+  - ["ads7843.y_pixels", "i", 240, {title: "The display pixel count in the vertical direction"}]
+  - ["ads7843.flip_x_y", "i", 0, {title: "Flip the X and Y directions (0/1, 0 = no flip). Use this is if the display is upside down."}]
+  - ["ads7843.min_x_adc", "i", 12,  {title: "The min X axis ADC calibration value. Enter the value from debug output (min adc x value at screen edge)."}]
+  - ["ads7843.max_x_adc", "i", 121,  {title: "The max X axis ADC calibration value. Enter the value from debug output (max adc x value at screen edge)."}]
+  - ["ads7843.min_y_adc", "i", 7,  {title: "The min Y axis ADC calibration value. Enter the value from debug output (min adc y value at screen edge)."}]
+  - ["ads7843.max_y_adc", "i", 118,  {title: "The max Y axis ADC calibration value. Enter the value from debug output (max adc y value at screen edge)."}]
+
+tags:
+  - c
+  - hw
+  - docs:drivers:ADS7843/XPT2046 SPI
+
+manifest_version: 2017-05-18
