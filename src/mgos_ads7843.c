@@ -97,6 +97,29 @@ static void ads7843_down_cb(void *arg) {
 static void dispatch_s_event_handler(void *arg) {
 
   if( s_event_handler ) {
+
+	if( mgos_sys_config_get_ads7843_flip_x_y() ) {
+		int saveX=event_data.x;
+		event_data.x=event_data.y;
+		event_data.y=saveX;
+	}
+
+	//Ensure the x and y values are not to large
+	if( event_data.x > mgos_sys_config_get_ads7843_x_pixels() ) {
+		event_data.x = mgos_sys_config_get_ads7843_x_pixels();
+	}
+	if( event_data.y > mgos_sys_config_get_ads7843_y_pixels() ) {
+		event_data.y = mgos_sys_config_get_ads7843_y_pixels();
+	}
+
+	if( mgos_sys_config_get_ads7843_flip_x() ) {
+		event_data.x=mgos_sys_config_get_ads7843_x_pixels()-event_data.x;
+	}
+
+	if( mgos_sys_config_get_ads7843_flip_y() ) {
+		event_data.y=mgos_sys_config_get_ads7843_y_pixels()-event_data.y;
+	}
+
     s_event_handler(&event_data);
   }
 }
@@ -144,11 +167,6 @@ static void ads7843_irh(int pin, void *arg) {
           x_pos = y_pos;
           y_pos = MAX_ADC_VALUE-tmp;
 
-        }
-
-        if( mgos_sys_config_get_ads7843_flip_x_y() ) {
-          x_pos = MAX_ADC_VALUE-x_pos;
-          y_pos = MAX_ADC_VALUE-y_pos;
         }
 
         if( x_pos >= min_adc_x ) {

@@ -54,6 +54,8 @@ config_schema:
   - ["ads7843.irq_pin", "i", 25, {title: "IRQ pin (taken low when the display is touched.)"}]
   - ["ads7843.x_pixels", "i", 320, {title: "The display pixel count in the horizontal direction"}]
   - ["ads7843.y_pixels", "i", 240, {title: "The display pixel count in the vertical direction"}]
+  - ["ads7843.flip_x",    "i", 0, {title: "Flip the X direction (0/1, 0 = no flip). Use this if the x direction is reversed."}]
+  - ["ads7843.flip_y",    "i", 0, {title: "Flip the Y direction (0/1, 0 = no flip). Use this if the y direction is reversed."}]
   - ["ads7843.flip_x_y", "i", 0, {title: "Flip the X and Y directions (0/1, 0 = no flip). Use this is if the display is upside down."}]
   - ["ads7843.min_x_adc", "i", 12,  {title: "The min X axis ADC calibration value. Enter the value from debug output (min adc x value at screen edge)."}]
   - ["ads7843.max_x_adc", "i", 121,  {title: "The max X axis ADC calibration value. Enter the value from debug output (max adc x value at screen edge)."}]
