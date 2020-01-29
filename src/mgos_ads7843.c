@@ -70,7 +70,9 @@ static int8_t get_touch_xpos(bool x) {
   cmd_byte |= a2a1a0 << CHNL_REG_BIT;
 
   struct mgos_spi_txn txn = {
-      .cs = mgos_sys_config_get_ads7843_cs_index(), .mode = 3, .freq = 500000,
+      .cs = mgos_sys_config_get_ads7843_cs_index(),
+      .mode = 3,
+      .freq = 500000,
   };
   txn.hd.tx_data = &cmd_byte;
   txn.hd.tx_len = 1;

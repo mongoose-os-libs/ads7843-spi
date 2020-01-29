@@ -27,8 +27,8 @@ enum mgos_ads7843_orientation_t {
 
 struct mgos_ads7843_event_data {
   enum mgos_ads7843_touch_t direction;  // Either TOUCH_DOWN or TOUCH_UP
-  float down_seconds;  // The time in seconds that the touch screen has been
-                       // held down.
+  float down_seconds;   // The time in seconds that the touch screen has been
+                        // held down.
   uint16_t x;           // The x position in screen pixels
   uint16_t y;           // The y position in screen pixels
   uint8_t x_adc;        // The x pos (ADC value not pixels)
