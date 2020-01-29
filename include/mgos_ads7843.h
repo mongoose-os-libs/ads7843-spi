@@ -1,5 +1,11 @@
-#ifndef __ADS7843H_
-#define __ADS7843H_
+#pragma once
+
+#include <stdbool.h>
+#include <stdint.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #define START_REG_BIT 7
 #define CHNL_REG_BIT 4
@@ -52,4 +58,6 @@ void set_max_landscape_height_cal_value(
 uint16_t get_screen_rotation(void);
 void set_screen_rotation(uint16_t _screen_rotation);
 
-#endif  // __ADS7843H_
+#ifdef __cplusplus
+}
+#endif
