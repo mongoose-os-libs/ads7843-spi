@@ -15,6 +15,7 @@
 #include "mgos_ads7843.h"
 #include "mgos.h"
 #include "mgos_spi.h"
+#include "mgos_time.h"
 
 static uint16_t s_max_x = 0;
 static uint16_t s_max_y = 0;
